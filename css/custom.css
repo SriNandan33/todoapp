@@ -1,0 +1,132 @@
+header{
+	background-color: #fff;
+	border-top: 3px solid #d9534f;
+	border-bottom: 0.2px solid grey;
+	height: 80px;
+	border-bottom: 1px solid #ddd;
+    box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+}
+.input-task{
+	width: 100%;
+	padding: 10px;
+}
+.input-task button{
+	line-height: 2.6;
+}
+.form-control{
+	height: 50px;
+}
+.main{
+	padding: 10px;
+}
+.task-container{
+	margin-left: 10%;
+}
+.uncompleted,.completed{
+	min-height: 550px;
+	padding: 0;
+	background-color: transparent;
+}
+.uncompleted{
+	margin-right: 2%;
+}
+ul.todo{
+	list-style-type: none;
+	width: 100%;
+	float: left;
+	padding: 0;
+}
+ul.todo li{
+	width: 100%;
+	min-height: 50px;
+	float: left;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 2px 3px 4px rgba(44,62,80,0.10);
+	margin-bottom: 10px;
+	padding: 10px 0 10px 5px;
+}
+ul.todo li:last-of-type{
+	margin-bottom: 0;
+}
+ul.todo div.row{
+	width: 100%;
+	min-height: 100%;
+	margin: 0;
+}
+ul.todo div.row div.task{
+	padding-right: 10px;
+	min-height: 100%;
+	font-size: 18px;
+}
+div.uncompleted ul.todo div.row a{
+	text-decoration: none;
+	float: right;
+	font-size: 20px;
+	padding-right: 10px;
+	color: grey;
+}
+div.uncompleted ul.todo div.row a.check{
+	color:grey;
+}
+div.uncompleted ul.todo div.row a.check:hover{
+	color:#5cb85c;
+}
+div.uncompleted ul.todo div.row a.trash:hover{
+	color:#d9534f;
+}
+
+
+div.completed ul.todo div.row a{
+	text-decoration: none;
+	float: right;
+	font-size: 20px;
+	padding-right: 10px;
+	color: grey;
+}
+div.completed ul.todo div.row a.check{
+	color:#5cb85c;
+}
+div.completed ul.todo div.row a.check:hover{
+	color:grey;
+}
+div.completed ul.todo div.row a.trash:hover{
+	color:#d9534f;
+}
+
+@media(max-width: 480px){
+	.task-container{
+		margin-left: 0;
+	}
+	.uncompleted,.completed{
+		min-height: 250px;
+	}
+	.uncompleted{
+		margin-bottom: 2%;
+	}
+}
+@media (max-width: 767px){
+	.task-container{
+		margin-left: 0;
+	}
+	.uncompleted,.completed{
+		min-height: 250px;
+	}
+	.uncompleted{
+		margin-bottom:2%;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px){
+	.task-container{
+		margin-left: 0;
+	}
+	.uncompleted,.completed{
+		min-height: 250px;
+	}
+	.uncompleted{
+		margin-bottom: 2%;
+	}
+}
+.box{
+	border: 1px dotted red;
+}
