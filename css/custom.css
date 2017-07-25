@@ -43,6 +43,26 @@ ul.todo{
 	float: left;
 	padding: 0;
 }
+ul.todo#todo:empty:before{
+	content: 'You have nothing todo';
+}
+ul.todo#completed:empty:before{
+	content: 'No task is completed yet';
+}
+ul.todo#todo:not(:empty):before{
+	content: 'Todo Tasks';
+}
+ul.todo#completed:not(:empty):before{
+	content: 'Completed Tasks';
+}
+ul.todo#todo:before,ul.todo#completed:before{
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 15px;
+	color:#aaa;
+}
+
 ul.todo li{
 	width: 100%;
 	min-height: 50px;
