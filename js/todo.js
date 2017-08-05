@@ -1,24 +1,60 @@
+var data = {
+	todo : [],
+	completed : []
+}
+
 document.getElementById('add').addEventListener('click',function(){
 	var task = document.getElementById('task').value;
 	if(task){
 		addTodoTask(task);
 		document.getElementById('task').value='';
+
+		data.todo.push(task);
+		updateDataObject();
 	} 
 });
+
+function updateDataObject(){
+	console.log(data);
+}
 function removeTask(){
-	var Task = this.parentNode.parentNode.parentNode;
-	var list = Task.parentNode;
-	list.removeChild(Task);
+	var task_parent = this.parentNode.parentNode;
+	var item = task_parent.parentNode;
+	var list = item.parentNode;
+	var list_id = list.id;
+	var value = task_parent.childNodes[0].innerText;
+
+	if (list_id === 'todo'){
+		data.todo.splice(data.todo.indexOf(value),1);
+	}else{
+		data.completed.splice(data.completed.indexOf(value),1);
+	}
+
+	updateDataObject();
+
+	list.removeChild(item);
 }
 function completeTask(){
-	var Task = this.parentNode.parentNode.parentNode;
-	var list = Task.parentNode;
+	var task_parent = this.parentNode.parentNode;
+	var item = task_parent.parentNode;
+	var list = item.parentNode;
 	var list_id = list.id;
+	var value = task_parent.childNodes[0].innerText;
+
+	if (list_id === 'todo'){
+		data.todo.splice(data.todo.indexOf(value),1);
+		data.completed.push(value);
+	}else{
+		data.completed.splice(data.completed.indexOf(value),1);
+		data.todo.push(value);
+	}
+
+	updateDataObject();
 
 	var target_list = (list_id === 'todo') ? document.getElementById('completed') : document.getElementById('todo')
 	
-	list.removeChild(Task);
-	target_list.insertBefore(Task,target_list.childNodes[0]);
+	list.removeChild(item);
+	target_list.insertBefore(item,target_list.childNodes[0]);
 	}
 
 function addTodoTask(text){
