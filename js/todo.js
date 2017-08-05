@@ -8,13 +8,23 @@ renderTasks();
 document.getElementById('add').addEventListener('click',function(){
 	var task = document.getElementById('task').value;
 	if(task){
+		addItem(task);
+	} 
+});
+
+document.getElementById('task').addEventListener('keydown',function(e){
+	var task = this.value;
+	if(e.code === 'Enter' && task){
+		addItem(task);
+	}
+})
+function addItem(task){
 		addTodoTask(task);
 		document.getElementById('task').value='';
 
 		data.todo.push(task);
 		updateDataObject();
-	} 
-});
+}
 
 function renderTasks(){
 	if (!data.todo.length && !data.completed.length) return;
