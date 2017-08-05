@@ -3,7 +3,7 @@ var data = (localStorage.getItem('todoList')) ? (JSON.parse(localStorage.getItem
 	completed : []
 }
 
-console.log(data);
+renderTasks();
 
 document.getElementById('add').addEventListener('click',function(){
 	var task = document.getElementById('task').value;
@@ -15,6 +15,19 @@ document.getElementById('add').addEventListener('click',function(){
 		updateDataObject();
 	} 
 });
+
+function renderTasks(){
+	if (!data.todo.length && !data.completed.length) return;
+
+	for(var i = 0 ; i < data.todo.length ; i++){
+		var value = data.todo[i];
+		addTodoTask(value);
+	}
+	for(var j = 0 ; j < data.completed.length ; j++){
+		var value = data.completed[j];
+		addTodoTask(value,true)
+	}
+}
 
 function updateDataObject(){
 	localStorage.setItem('todoList', JSON.stringify(data))
@@ -59,8 +72,8 @@ function completeTask(){
 	target_list.insertBefore(item,target_list.childNodes[0]);
 	}
 
-function addTodoTask(text){
-	var list = document.getElementById('todo');
+function addTodoTask(text,completed){
+	var list =(completed) ? document.getElementById('completed') : document.getElementById('todo');
 
 	var item = document.createElement('li');
 
