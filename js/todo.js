@@ -1,7 +1,9 @@
-var data = {
+var data = (localStorage.getItem('todoList')) ? (JSON.parse(localStorage.getItem('todoList'))):{
 	todo : [],
 	completed : []
 }
+
+console.log(data);
 
 document.getElementById('add').addEventListener('click',function(){
 	var task = document.getElementById('task').value;
@@ -15,7 +17,7 @@ document.getElementById('add').addEventListener('click',function(){
 });
 
 function updateDataObject(){
-	console.log(data);
+	localStorage.setItem('todoList', JSON.stringify(data))
 }
 function removeTask(){
 	var task_parent = this.parentNode.parentNode;
